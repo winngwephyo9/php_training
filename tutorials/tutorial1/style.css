@@ -4,3 +4,13 @@ table{
   border-collapse: 0px;
   border-spacing: 0px;
 }
+.white{
+  height: 30px;
+  width: 30px;
+  background-color: #ffffff;
+}
+.black{
+  height: 30px;
+  width: 30px;
+  background-color: #000000;
+}

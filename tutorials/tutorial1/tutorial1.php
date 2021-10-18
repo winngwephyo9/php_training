@@ -18,11 +18,11 @@
         $total=$row+$col;
         if($total%2==0)
         {
-          echo "<td height=30px width=30px bgcolor=#FFFFFF></td>";
+         echo "<td class='white'></td>";
         }
         else
         {
-          echo "<td height=30px width=30px bgcolor=#000000></td>";
+          echo "<td class='black'></td>";
         }
       }
       echo "</tr>";
