@@ -1,21 +1,17 @@
-* {
-      box-sizing: border-box;
-      }
-      .clearFix:after {
-      content: "";
-      clear: both;
-      display: block;
-      visibility: hidden;
-      font-size: 0;
-      }
-
-      body {
-         padding-top: 40px;
-         padding-bottom: 40px;
-         background-color: #ADABAB;
-      }
-
-      .container {
+* { box-sizing: border-box; }
+.clearFix:after {
+content: "";
+clear: both;
+display: block;
+visibility: hidden;
+font-size: 0;
+}
+body {
+padding-top: 40px;
+padding-bottom: 40px;
+background-color: #ADABAB;
+ }
+.container {
 max-width: 1000px;
 border-radius: 5px;
 background-color: #f2f2f2;
@@ -61,12 +57,11 @@ padding: 12px 20px;
 margin: 8px 0;
 box-sizing: border-box;
 }      
-      h2{
-         text-align: center;
-         color: #017572;
-      }
-      
-      .col-25 {
+h2{
+text-align: center;
+color: #017572;
+}     
+.col-25 {
 float: left;
 width: 30%;
 margin-top: 6px;

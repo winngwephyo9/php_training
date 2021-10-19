@@ -42,7 +42,7 @@ else {
      <div class="clearFix">
       <div class="col-25">
         <label>Password</label>
-     </div>
+      </div>
      <div class="col-75">
         <input type="password" name="password" placeholder="Password=Win12345">
      </div>
