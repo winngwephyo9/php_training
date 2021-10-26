@@ -1,8 +1,8 @@
 <?php
-$txtFile = 'file\file1.txt';
-$excelFile = 'file\file2.excel';
-$csvFile = 'file\file3.csv';
-$docFile = 'file\file4.doc';
+$TXTFILE = 'file\file1.txt';
+$EXCELFILE = 'file\file2.excel';
+$CSVFILE = 'file\file3.csv';
+$DOCFILE = 'file\file4.doc';
 ?>
 
 <!DOCTYPE html>
@@ -21,28 +21,28 @@ $docFile = 'file\file4.doc';
     <div class="accordion_head">Text File<span class="plusminus">+</span></div>
     <div class="accordion_body" style="display: none;">
       <p><?php
-          echo file_get_contents($txtFile);
+          echo file_get_contents($TXTFILE);
           ?>
       </p>
     </div>
     <div class="accordion_head">Excel File<span class="plusminus">+</span></div>
     <div class="accordion_body" style="display: none;">
       <p><?php
-          echo file_get_contents($excelFile);
+          echo file_get_contents($EXCELFILE);
           ?>
       </p>
     </div>
     <div class="accordion_head">CSV File<span class="plusminus">+</span></div>
     <div class="accordion_body" style="display: none;">
       <p><?php
-          echo file_get_contents($csvFile);
+          echo file_get_contents($CSVFILE);
           ?>
       </p>
     </div>
     <div class="accordion_head">Doc File<span class="plusminus">+</span></div>
     <div class="accordion_body" style="display: none;">
       <p><?php
-          echo file_get_contents($docFile);
+          echo file_get_contents($DOCFILE);
           ?>
       </p>
     </div>
