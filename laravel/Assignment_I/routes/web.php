@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Task\TaskController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,16 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 /**
- * Display All Tasks
+ * Product Controller
  */
-Route::get('/', [TaskController::class, 'showTaskList']);
-/**
- * Add Task
- */
-Route::post('/task', [TaskController::class, 'postTask']);
-/**
-* Delete Task
-*/
-Route::delete('/task{id}', [TaskController::class, 'deleteTask']);
-?>
+Route::resource('products', ProductController::class);

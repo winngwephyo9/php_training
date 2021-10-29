@@ -1,8 +1,7 @@
 <?php
 namespace App\Contracts\Services\Task;
 
-use App\Http\Requests\UserAddRequest;
-use Illuminate\Http\Request;
+
 /**
  * Interface for Data Accessing Object of Post
  */
@@ -18,7 +17,7 @@ interface TaskServiceInterface
   * @param object $request 
   * To save task
   */
-    public function postTask(UserAddRequest $request);
+    public function postTask($request);
     /**
      * To delete task
      * @param string $id task id

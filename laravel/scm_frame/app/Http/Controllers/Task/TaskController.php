@@ -40,10 +40,11 @@ class TaskController extends Controller
     }
     /**
      * add task
+     * @param UserAddRequest $request
+     * return View task list
      */
     public function postTask(UserAddRequest $request)
     {
-        // $post=$this->taskInterface->postTask($request); 
         $validated = $request->validated();
         $this->taskInterface->postTask($request);
         return redirect('/');
@@ -56,7 +57,7 @@ class TaskController extends Controller
 
     public function deleteTask($id)
     {
-        $this->taskInterface->deleteTask($id);
-        return redirect('/');
+        $msg = $this->taskInterface->deleteTask($id);
+        return redirect('/')->with('message', $msg);
     }
 }

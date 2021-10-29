@@ -18,7 +18,7 @@ interface TaskDaoInterface
   * @param object $request 
   * To save task
   */
-    public function postTask(UserAddRequest $request);
+    public function postTask($request);
     /**
      * To delete task
      * @param string $id task id
