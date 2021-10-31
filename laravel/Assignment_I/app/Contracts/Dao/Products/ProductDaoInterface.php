@@ -2,6 +2,8 @@
 
 namespace App\Contracts\Dao\Products;
 
+use Illuminate\Http\Request;
+
 interface ProductDaoInterface
 {
     /**
@@ -9,6 +11,12 @@ interface ProductDaoInterface
      * @return $products
      */
     public function getProducts();
+
+    /**
+     * To get trashproducts
+     * @return $products
+     */
+    public function getTrashProducts();
 
     /**
      * Add new product

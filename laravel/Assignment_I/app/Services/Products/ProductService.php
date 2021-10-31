@@ -27,7 +27,7 @@ class ProductService implements ProductServiceInterface
      */
     public function getProducts()
     {
-        return $this->productDao->getProducts();
+       $this->productDao->getProducts();
     }
 
     /**
@@ -36,7 +36,7 @@ class ProductService implements ProductServiceInterface
      */
     public function addProduct($request)
     {
-        $this->productDao->addProduct($request);
+      $this->productDao->addProduct($request);
     }
 
     /**
@@ -45,7 +45,7 @@ class ProductService implements ProductServiceInterface
      */
     public function updateProduct($request, $product)
     {
-        $this->productDao->updateProduct($request, $product);
+         $this->productDao->updateProduct($request, $product);
     }
 
     /**

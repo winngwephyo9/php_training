@@ -22,14 +22,14 @@ class UserProductRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {   
+    {
         return [
-                     'name' => 'required',
-                    'price' => 'required',
-                    'detail' => 'required',
-                    'reviews' => 'required',
-        
-                
+            'name' => 'required',
+            'price' => 'required',
+            'detail' => 'required',
+            'reviews' => 'required',
+
+
         ];
     }
 }

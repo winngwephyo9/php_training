@@ -2,6 +2,8 @@
 
 namespace App\Contracts\Services\Products;
 
+use Illuminate\Http\Request;
+
 interface ProductServiceInterface
 {
     /**
@@ -9,6 +11,12 @@ interface ProductServiceInterface
      * @return $products
      */
     public function getProducts();
+
+    /**
+     * To get trashproducts
+     * @return $products
+     */
+    public function getTrashProducts();
 
     /**
      * Add new product

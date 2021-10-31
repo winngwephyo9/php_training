@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Dao\Products;
 
 use App\Contracts\Dao\Products\ProductDaoInterface;
@@ -14,6 +13,16 @@ class ProductDao implements ProductDaoInterface
     public function getProducts()
     {
         $products = Product::latest()->paginate(10);
+        return $products;
+    }
+
+    /**
+     * To get trashproducts
+     * @return $products
+     */
+    public function getTrashProducts()
+    {
+        $products = Product::onlyTrashed()->get();
         return $products;
     }
 
