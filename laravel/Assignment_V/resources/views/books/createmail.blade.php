@@ -1,0 +1,1 @@
+A new row with the name called <strong>{!! $name !!}</strong> is created.
