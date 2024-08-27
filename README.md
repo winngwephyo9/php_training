@@ -60,24 +60,31 @@
                     buildings: [
                         {
                             buildingName: 'Building 1',
-                            startDate: '2023-01-01',
-                            endDate: '2023-12-31',
-                            setting: 'Configuration 1',
-                            amount: 1000
+                            details: [
+                                {
+                                    startDate: '2023-01-01',
+                                    endDate: '2023-12-31',
+                                    setting: 'Configuration 1',
+                                    amount: 1000
+                                },
+                                {
+                                    startDate: '2023-02-01',
+                                    endDate: '2023-11-30',
+                                    setting: 'Configuration 2',
+                                    amount: 1200
+                                }
+                            ]
                         },
                         {
                             buildingName: 'Building 2',
-                            startDate: '2023-02-01',
-                            endDate: '2023-11-30',
-                            setting: 'Configuration 2',
-                            amount: 1200
-                        },
-                        {
-                            buildingName: 'Building 5',
-                            startDate: '2023-02-01',
-                            endDate: '2023-11-30',
-                            setting: 'Configuration 2',
-                            amount: 1200
+                            details: [
+                                {
+                                    startDate: '2023-02-01',
+                                    endDate: '2023-11-30',
+                                    setting: 'Configuration 3',
+                                    amount: 1500
+                                }
+                            ]
                         }
                     ]
                 },
@@ -86,17 +93,20 @@
                     buildings: [
                         {
                             buildingName: 'Building 3',
-                            startDate: '2024-02-01',
-                            endDate: '2024-11-30',
-                            setting: 'Configuration 3',
-                            amount: 1500
-                        },
-                        {
-                            buildingName: 'Building 4',
-                            startDate: '2024-02-01',
-                            endDate: '2024-11-30',
-                            setting: 'Configuration 3',
-                            amount: 1500
+                            details: [
+                                {
+                                    startDate: '2024-02-01',
+                                    endDate: '2024-11-30',
+                                    setting: 'Configuration 4',
+                                    amount: 2000
+                                },
+                                {
+                                    startDate: '2024-03-01',
+                                    endDate: '2024-10-30',
+                                    setting: 'Configuration 5',
+                                    amount: 2500
+                                }
+                            ]
                         }
                     ]
                 }
@@ -105,58 +115,59 @@
             const tableBody = document.querySelector('#dataTable tbody');
             data.forEach(company => {
                 const { companyName, buildings } = company;
-                buildings.forEach((building, index) => {
-                    const row = document.createElement('tr');
-                    row.classList.add('building-row');
-                    row.dataset.companyName = companyName;
+                buildings.forEach((building, buildingIndex) => {
+                    building.details.forEach((detail, detailIndex) => {
+                        const row = document.createElement('tr');
+                        row.classList.add('building-row');
+                        row.dataset.companyName = companyName;
+                        row.dataset.buildingName = building.buildingName;
 
-                    if (index === 0) {
-                        const companyCell = document.createElement('td');
-                        companyCell.classList.add('company-name-cell');
-                        companyCell.rowSpan = buildings.length;
-                        companyCell.innerHTML = `
-                    <input type="checkbox" class="toggle-btn company-toggle-btn" data-company-name="${companyName}">
-                    ${companyName}
-                `;
-                        row.appendChild(companyCell);
-                    }
+                        if (buildingIndex === 0 && detailIndex === 0) {
+                            const companyCell = document.createElement('td');
+                            companyCell.classList.add('company-name-cell');
+                            companyCell.rowSpan = buildings.reduce((acc, b) => acc + b.details.length, 0);
+                            companyCell.innerHTML = `
+                                <input type="checkbox" class="toggle-btn company-toggle-btn" data-company-name="${companyName}">
+                                ${companyName}
+                            `;
+                            row.appendChild(companyCell);
+                        }
 
-                    // Building Name
-                    const buildingCell = document.createElement('td');
-                    buildingCell.classList.add('building-name-cell');
-                    buildingCell.innerHTML = `
-                <input type="checkbox" class="toggle-btn building-toggle-btn">
-                ${building.buildingName}
-            `;
-                    row.appendChild(buildingCell);
+                        if (detailIndex === 0) {
+                            const buildingCell = document.createElement('td');
+                            buildingCell.classList.add('building-name-cell');
+                            buildingCell.rowSpan = building.details.length;
+                            buildingCell.innerHTML = `
+                                <input type="checkbox" class="toggle-btn building-toggle-btn">
+                                ${building.buildingName}
+                            `;
+                            row.appendChild(buildingCell);
+                        }
 
-                    // Start Date
-                    const startDateCell = document.createElement('td');
-                    startDateCell.classList.add('start-date-cell');
-                    startDateCell.textContent = building.startDate;
-                    row.appendChild(startDateCell);
+                        const startDateCell = document.createElement('td');
+                        startDateCell.classList.add('start-date-cell');
+                        startDateCell.textContent = detail.startDate;
+                        row.appendChild(startDateCell);
 
-                    // End Date
-                    const endDateCell = document.createElement('td');
-                    endDateCell.classList.add('end-date-cell');
-                    endDateCell.textContent = building.endDate;
-                    row.appendChild(endDateCell);
+                        const endDateCell = document.createElement('td');
+                        endDateCell.classList.add('end-date-cell');
+                        endDateCell.textContent = detail.endDate;
+                        row.appendChild(endDateCell);
 
-                    // Setting
-                    const settingCell = document.createElement('td');
-                    settingCell.classList.add('setting-cell');
-                    settingCell.textContent = building.setting;
-                    settingCell.dataset.originalSetting = building.setting;
-                    row.appendChild(settingCell);
+                        const settingCell = document.createElement('td');
+                        settingCell.classList.add('setting-cell');
+                        settingCell.textContent = detail.setting;
+                        settingCell.dataset.originalSetting = detail.setting;
+                        row.appendChild(settingCell);
 
-                    // Amount
-                    const amountCell = document.createElement('td');
-                    amountCell.classList.add('amount-cell');
-                    amountCell.textContent = building.amount;
-                    amountCell.dataset.originalAmount = building.amount;
-                    row.appendChild(amountCell);
+                        const amountCell = document.createElement('td');
+                        amountCell.classList.add('amount-cell');
+                        amountCell.textContent = detail.amount;
+                        amountCell.dataset.originalAmount = detail.amount;
+                        row.appendChild(amountCell);
 
-                    tableBody.appendChild(row);
+                        tableBody.appendChild(row);
+                    });
                 });
             });
 
@@ -178,21 +189,17 @@
 
                         if (isChecked) {
                             if (index === 0) {
-                                // Hide BuildingName, StartDate, and EndDate for the first row
                                 buildingCell.style.visibility = 'hidden';
                                 startDateCell.style.visibility = 'hidden';
                                 endDateCell.style.visibility = 'hidden';
                             } else {
-                                // Hide Entire Row Except First
                                 row.style.display = 'none';
                             }
 
-                            // Collect Settings and Amounts
                             combinedSettings.push(settingCell.dataset.originalSetting);
                             totalAmount += parseFloat(amountCell.dataset.originalAmount);
-
-                            // Ensure that CompanyName for other companies remains visible
-                            document.querySelectorAll('.company-name-cell').forEach(companyCell => {
+                                                   // Ensure that CompanyName for other companies remains visible
+                                                   document.querySelectorAll('.company-name-cell').forEach(companyCell => {
                                 if (companyCell.rowSpan > 1 && rows.length === companyCell.rowSpan) {
                                     companyCell.rowSpan = 1;
                                 }
@@ -204,16 +211,13 @@
                                 companyCell.rowSpan = rows.length;
                             }
 
-                            // Show Cells
-                            buildingCell.style.visibility = 'visible';
-                            startDateCell.style.visibility = 'visible';
-                            endDateCell.style.visibility = 'visible';
-
-                            // Restore Original Settings and Amounts
+                            if (index === 0 && buildingCell) {
+                                buildingCell.style.visibility = 'visible';
+                                startDateCell.style.visibility = 'visible';
+                                endDateCell.style.visibility = 'visible';
+                            }
                             settingCell.textContent = settingCell.dataset.originalSetting;
                             amountCell.textContent = amountCell.dataset.originalAmount;
-
-                            // Show All Rows
                             row.style.display = '';
                         }
                     });
@@ -230,34 +234,57 @@
             });
 
             // Event Listener for Building Toggle Buttons
-            const buildingToggleButtons = document.querySelectorAll('.building-toggle-btn');
-
-            buildingToggleButtons.forEach(button => {
+            document.querySelectorAll('.building-toggle-btn').forEach(button => {
                 button.addEventListener('change', function () {
                     const row = this.closest('tr');
-                    const isCompanyNameCellPresent = row.querySelector('td:nth-child(1)').classList.contains('company-name-cell');
-                    const startDateCell = isCompanyNameCellPresent
-                        ? row.querySelector('td:nth-child(3)')  // If CompanyName cell is present, StartDate is in 3rd column
-                        : row.querySelector('td:nth-child(2)'); // If CompanyName cell is not present, StartDate is in 2nd column
-                    const endDateCell = isCompanyNameCellPresent
-                        ? row.querySelector('td:nth-child(4)')  // If CompanyName cell is present, EndDate is in 4th column
-                        : row.querySelector('td:nth-child(3)'); // If CompanyName cell is not present, EndDate is in 3rd column
+                    const buildingName = row.querySelector('.building-name-cell').textContent.trim();
+                    const buildingRows = document.querySelectorAll(`tr[data-building-name="${buildingName}"]`);
+                    let combinedSettings = [];
+                    let totalAmount = 0;
 
-                    if (startDateCell) {
-                        startDateCell.style.visibility = this.checked ? 'hidden' : 'visible';
-                    }
+                    buildingRows.forEach((r, index) => {
+                        const startDateCell = r.querySelector('.start-date-cell');
+                        const endDateCell = r.querySelector('.end-date-cell');
+                        const settingCell = r.querySelector('.setting-cell');
+                        const amountCell = r.querySelector('.amount-cell');
 
-                    if (endDateCell) {
-                        endDateCell.style.visibility = this.checked ? 'hidden' : 'visible';
+                        if (this.checked) {
+                            if (index === 0) {
+                                startDateCell.style.visibility = 'hidden';
+                                endDateCell.style.visibility = 'hidden';
+                            } else {
+                                r.style.display = 'none';
+                            }
+
+                            combinedSettings.push(settingCell.dataset.originalSetting);
+                            totalAmount += parseFloat(amountCell.dataset.originalAmount);
+                        } else {
+                            if (index === 0) {
+                                startDateCell.style.visibility = 'visible';
+                                endDateCell.style.visibility = 'visible';
+                            }
+                            r.style.display = '';
+                            settingCell.textContent = settingCell.dataset.originalSetting;
+                            amountCell.textContent = amountCell.dataset.originalAmount;
+                        }
+                    });
+
+                    if (this.checked && buildingRows.length > 0) {
+                        const firstRow = buildingRows[0];
+                        const firstSettingCell = firstRow.querySelector('td:nth-child(5)');
+                        const firstAmountCell = firstRow.querySelector('td:nth-child(6)');
+
+                        firstSettingCell.textContent = combinedSettings.join(', ');
+                        firstAmountCell.textContent = totalAmount;
                     }
                 });
             });
         });
     </script>
-
 </body>
 
 </html>
+
 
 
 # php_training
