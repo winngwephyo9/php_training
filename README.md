@@ -180,32 +180,36 @@
                     let totalAmount = 0;
                     let combinedSettings = [];
 
+
                     rows.forEach((row, index) => {
+                        // let previousBuildingName = '';
                         let buildingCell = row.querySelector('.building-name-cell');
                         let startDateCell = row.querySelector('.start-date-cell');
                         let endDateCell = row.querySelector('.end-date-cell');
                         let settingCell = row.querySelector('.setting-cell');
                         let amountCell = row.querySelector('.amount-cell');
-
+                        // const buildingName = buildingCell ? buildingCell.textContent.trim() : previousBuildingName;
+                        // previousBuildingName = buildingName;
+                        // const buildingRows = document.querySelectorAll(`tr[data-building-name="${previousBuildingName}"]`);
                         if (isChecked) {
                             if (index === 0) {
+                                // buildingCell.rowSpan = 1;
                                 buildingCell.style.visibility = 'hidden';
                                 startDateCell.style.visibility = 'hidden';
                                 endDateCell.style.visibility = 'hidden';
                             } else {
                                 row.style.display = 'none';
                             }
-
                             combinedSettings.push(settingCell.dataset.originalSetting);
                             totalAmount += parseFloat(amountCell.dataset.originalAmount);
-                                                   // Ensure that CompanyName for other companies remains visible
-                                                   document.querySelectorAll('.company-name-cell').forEach(companyCell => {
+                            // Ensure that CompanyName for other companies remains visible
+                            document.querySelectorAll('.company-name-cell').forEach(companyCell => {
                                 if (companyCell.rowSpan > 1 && rows.length === companyCell.rowSpan) {
                                     companyCell.rowSpan = 1;
                                 }
                             });
                         } else {
-                            // Ensure the company name cell spans the correct number of rows
+                            // buildingCell.rowSpan = buildingRows.length;
                             if (index === 0) {
                                 const companyCell = row.querySelector('.company-name-cell');
                                 companyCell.rowSpan = rows.length;
@@ -277,6 +281,13 @@
                         firstSettingCell.textContent = combinedSettings.join(', ');
                         firstAmountCell.textContent = totalAmount;
                     }
+
+                    // Ensure other buildings' rows are not affected
+                    document.querySelectorAll('tr').forEach(r => {
+                        if (!r.dataset.buildingName || r.dataset.buildingName !== buildingName) {
+                            r.style.display = '';
+                        }
+                    });
                 });
             });
         });
@@ -284,7 +295,6 @@
 </body>
 
 </html>
-
 
 
 # php_training
