@@ -296,5 +296,46 @@
 
 </html>
 
+||||||||||||||||||||||||||||||||||||||||
 
+var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+$(document).ready(function () {
+getData()
+});
+//getData
+function getData() {
+    return new Promise((resolve, reject) => {
+        ShowLoading();
+        $.ajax({
+            url: url_prefix + "/partnerMgmt/getData",
+            async: true,
+            type: 'post',
+            data: { _token: CSRF_TOKEN },
+            success: function (data) {
+                if (data.includes("success")) {
+                    console.log("succssfully updated!");
+                    HideLoading();
+                    resolve(data);
+                    location.reload();
+
+                }
+                else if (data.includes("no_token")) {
+                    reject(err);
+                    alert("BOXにログインされていないため更新できませんでした。");
+
+                }
+                else if (data.includes("no_authority")) {
+                    alert("権限がありません。");
+
+                }
+                HideLoading();
+            },
+            error: function (err) {
+                console.log("error has occurred.");
+                // console.log(err);
+            }
+        });
+    });
+}
 # php_training
