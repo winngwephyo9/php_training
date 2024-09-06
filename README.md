@@ -1,5 +1,11 @@
 # php_training
 
+![image](https://github.com/user-attachments/assets/ab665c96-17f6-4bf7-ae1e-c32e2be993d5)
+
+
+![image](https://github.com/user-attachments/assets/d73b9e02-623d-4241-860a-24ea88a22517)
+
+
 https://github.com/winngwephyo9/php_training/commit/2e23cdf53f0c450a4a26b323ff25a3d36fbe9724#commitcomment-146210173
 
 
