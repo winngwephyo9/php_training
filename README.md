@@ -65,10 +65,14 @@ function populateTable(data) {
 // Fetch and display the data when the page loads
 fetchData();
 
+![image](https://github.com/user-attachments/assets/9efd1af5-5d22-401c-be6e-9b93a633cdf6)
+
+
 ![image](https://github.com/user-attachments/assets/ab665c96-17f6-4bf7-ae1e-c32e2be993d5)
 
 
 ![image](https://github.com/user-attachments/assets/d73b9e02-623d-4241-860a-24ea88a22517)
+
 
 
 https://github.com/winngwephyo9/php_training/commit/2e23cdf53f0c450a4a26b323ff25a3d36fbe9724#commitcomment-146210173
