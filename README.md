@@ -1,4 +1,69 @@
 # php_training
+// Mock API call function to fetch company data
+async function fetchData() {
+    // Replace this with actual API URL
+    const response = await fetch('your-api-endpoint-here');
+    const data = await response.json();
+
+    // Assuming your API data structure is like this:
+    /*
+    [
+        { company_name: "会社名1", tasks: [ {作業: "作成", 設備モデル: 2, ...}, ...] },
+        { company_name: "会社名2", tasks: [ {作業: "修正", 設備モデル: 1, ...}, ...] }
+    ]
+    */
+
+    // Call the function to populate the table
+    populateTable(data);
+}
+
+// Function to create and append table rows
+function populateTable(data) {
+    const tableBody = document.getElementById('table-body');
+
+    data.forEach(company => {
+        // Add main row with company name
+        const companyRow = document.createElement('tr');
+        companyRow.classList.add('company-row');
+
+        companyRow.innerHTML = `
+            <td rowspan="${company.tasks.length}">${company.company_name}</td>
+            <td>${company.tasks[0].作業}</td>
+            <td>${company.tasks[0].意匠モデル || ''}</td>
+            <td>${company.tasks[0].構造モデル || ''}</td>
+            <td>${company.tasks[0].設備モデル || ''}</td>
+            <td>${company.tasks[0].生産設計モデル || ''}</td>
+            <td>${company.tasks[0].デジタルモックアップ || ''}</td>
+            <td>${company.tasks[0].CG || ''}</td>
+            <td>${company.tasks[0].点群モデル || ''}</td>
+            <td>${company.tasks[0].意匠図 || ''}</td>
+            <td>${company.tasks[0].構造図 || ''}</td>
+        `;
+
+        tableBody.appendChild(companyRow);
+
+        // Add additional rows for tasks
+        for (let i = 1; i < company.tasks.length; i++) {
+            const taskRow = document.createElement('tr');
+            taskRow.innerHTML = `
+                <td>${company.tasks[i].作業}</td>
+                <td>${company.tasks[i].意匠モデル || ''}</td>
+                <td>${company.tasks[i].構造モデル || ''}</td>
+                <td>${company.tasks[i].設備モデル || ''}</td>
+                <td>${company.tasks[i].生産設計モデル || ''}</td>
+                <td>${company.tasks[i].デジタルモックアップ || ''}</td>
+                <td>${company.tasks[i].CG || ''}</td>
+                <td>${company.tasks[i].点群モデル || ''}</td>
+                <td>${company.tasks[i].意匠図 || ''}</td>
+                <td>${company.tasks[i].構造図 || ''}</td>
+            `;
+            tableBody.appendChild(taskRow);
+        }
+    });
+}
+
+// Fetch and display the data when the page loads
+fetchData();
 
 ![image](https://github.com/user-attachments/assets/ab665c96-17f6-4bf7-ae1e-c32e2be993d5)
 
