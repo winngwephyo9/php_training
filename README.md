@@ -1,4 +1,7 @@
 # php_training
+
+![キャプチャ](https://github.com/user-attachments/assets/7e53ca2b-4cef-4168-9e41-3d9b842bf850)
+
 // Mock API call function to fetch company data
 async function fetchData() {
     // Replace this with actual API URL
