@@ -1,5 +1,12 @@
 # php_training
 
+
+<img width="779" alt="Screenshot 2024-09-11 at 16 17 34" src="https://github.co<img width="703" alt="Screenshot 2024-09-11 at 16 18 34" src="https://github.com/user-attachments/assets/fce8d326-3e06-4150-b0d9-12c177bc3ed3">
+m/user-attachments/assets/619efae4-8511-4d07-b4f0-3770206142e5">
+<img width="863" alt="Screenshot 2024-09-11 at 16 17 48" src="https://github.com/user-attachments/assets/<img width="585" alt="Screenshot 2024-09-11 at 16 19 01" src="https://github.com/user-attachments/assets/17bfd915-2535-4bf6-824e-9c0bdcc134f3">
+b692c6db-27ac-4086-a037-df8fc2ce82a9">
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
